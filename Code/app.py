@@ -1,6 +1,6 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
-from the_blue_castle import histogram
+from histogram import histogram
 import random
 
 app = Flask(__name__)
