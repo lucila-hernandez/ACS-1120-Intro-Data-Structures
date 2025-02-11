@@ -8,7 +8,7 @@ app = Flask(__name__)
 # TODO: Initialize your histogram, hash table, or markov chain here.
 # Any code placed here will run only once, when the server starts.
 
-hist = histogram('the_blue_castle.txt')
+hist = histogram('Code/the_blue_castle.txt')
 
 @app.route("/")
 def home():
