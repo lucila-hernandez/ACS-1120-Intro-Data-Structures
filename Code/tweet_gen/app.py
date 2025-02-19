@@ -1,8 +1,8 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
-from tweet_gen.histogram import histogram
-from tweet_gen.listogram import Listogram
-from tweet_gen.dictogram import Dictogram
+from histogram import histogram
+from listogram import Listogram
+from dictogram import Dictogram
 import random
 
 app = Flask(__name__)
