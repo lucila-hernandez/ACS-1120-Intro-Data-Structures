@@ -2,7 +2,7 @@ from collections import Counter
 
 def histogram(source_text):
     """Takes text or filename, removes punctuation, and returns a word count dictionary."""
-    with open('Code/the_blue_castle.txt', 'r', encoding='utf-8') as file:
+    with open('the_blue_castle.txt', 'r', encoding='utf-8') as file:
         source_text = file.read()
 
     # Step 1: Convert text to lowercase
