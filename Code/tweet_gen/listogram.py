@@ -23,15 +23,16 @@ class Listogram(list):
         found = False
         for i, (existing_word, freq) in enumerate(self): 
             if existing_word == word: 
-                self[i] = [existing_word, freq + count]
+                self[i] = (existing_word, freq + count)  
                 found = True
                 break
         
         if not found: 
-            self.append([word, count])
-            self.types +=1 
+            self.append((word, count))  
+            self.types += 1 
 
         self.tokens += count
+
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
