@@ -2,7 +2,7 @@ from collections import Counter
 
 def histogram(source_text):
     """Takes text or filename, removes punctuation, and returns a word count dictionary."""
-    with open('the_blue_castle.txt', 'r', encoding='utf-8') as file:
+    with open('../data/corpus.txt', 'r', encoding='utf-8') as file:
         source_text = file.read()
 
     # Step 1: Convert text to lowercase
@@ -31,7 +31,7 @@ def frequency(word, histogram):
     return histogram.get(word.lower(), 0)
 
 if __name__ == '__main__':
-    hist = histogram('the_blue_castle.txt')  
+    hist = histogram('../data/corpus.txt')  
 
     print("Unique words:", unique_words(hist))
     print("Frequency of 'castle':", frequency('castle', hist))

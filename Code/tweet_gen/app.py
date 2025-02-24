@@ -10,14 +10,14 @@ app = Flask(__name__)
 # TODO: Initialize your histogram, hash table, or markov chain here.
 # Any code placed here will run only once, when the server starts.
 
-hist = histogram("Code/the_blue_castle.txt")
+hist = histogram("data/corpus.txt")
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
     words = list(hist.keys()) # get unique word from the hist
     if words:
-        random_index = random.randint(0, len(words) - 1) # genrate random indez
+        random_index = random.randint(0, len(words) - 1) # genrate random index
         random_word = words[random_index] # pick word
         return random_word
 
