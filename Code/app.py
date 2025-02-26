@@ -16,10 +16,16 @@ hist = histogram("data/corpus.txt")
 def home():
     """Route that returns a web page containing the generated text."""
     words = list(hist.keys()) # get unique word from the hist
+    num_words_to_generate = 5
+
+    random_words = []
     if words:
-        random_index = random.randint(0, len(words) - 1) # genrate random index
-        random_word = words[random_index] # pick word
-        return random_word
+        for _ in range(num_words_to_generate):
+            random_index = random.randint(0, len(words) - 1)  # Generate random index
+            random_word = words[random_index]  # Pick word
+            random_words.append(random_word)  # Add to the list of random words
+
+    return " " + " ".join(random_words)  # Return the words separated by spaces
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.
