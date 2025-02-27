@@ -28,7 +28,7 @@ class Listogram(list):
                 break
         
         if not found: 
-            self.append((word, count))  
+            self.append([word, count])  
             self.types += 1 
 
         self.tokens += count
