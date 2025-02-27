@@ -136,6 +136,8 @@ class LinkedList:
         
         raise ValueError('Item not found: {}'.format(item))
 
+# It's failing a test because linkedlist_test.py is looking for a replace method but the 
+# starter code does not mention for us to add this method.
 def test_linked_list():
     ll = LinkedList()
     print('list: {}'.format(ll))
