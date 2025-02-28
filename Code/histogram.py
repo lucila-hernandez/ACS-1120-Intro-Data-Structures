@@ -1,26 +1,26 @@
 from collections import Counter
+import re
+
 
 def histogram(source_text):
     """Takes text or filename, removes punctuation, and returns a word count dictionary."""
     with open('data/corpus.txt', 'r', encoding='utf-8') as file:
         source_text = file.read()
 
-    # Step 1: Convert text to lowercase
-    source_text = source_text.lower()
+    # Step 1: Normalize punctuation like curly quotes to straight quotes
+    source_text = source_text.replace('“', '"').replace('”', '"')
+    source_text = source_text.replace('‘', "'").replace('’', "'")
 
-    # Step 2: Remove punctuation (replace non-letters/numbers with spaces)
-    cleaned_text = ""
-    for letter in source_text:
-        if letter.isalnum() or letter.isspace():
-            cleaned_text += letter
-        else:
-            cleaned_text += " "
+    # Step 2: Tokenization using Regular Expressions to capture words and hyphenated words
+    tokens = tokenize(source_text)
 
-    # Step 3: Split into words
-    words = cleaned_text.split()
+    # Step 3: Count word frequencies
+    return Counter(tokens)
 
-    # Step 4: Count word frequencies
-    return Counter(words)
+def tokenize(text):
+    """Tokenizes the text into words, keeping hyphenated words and quotes as needed."""
+    # Match words, hyphenated words, and words with quotes
+    return re.findall(r'\b\w+(?:-\w+)*\b|\b"[^"]+"\b|\b\'[^\']+\'\b', text.lower())
 
 def unique_words(histogram):
     """Returns the number of unique words in the histogram."""
@@ -34,4 +34,4 @@ if __name__ == '__main__':
     hist = histogram('../data/corpus.txt')  
 
     print("Unique words:", unique_words(hist))
-    print("Frequency of 'castle':", frequency('castle', hist))
+    print("Frequency of 'Frankenstein':", frequency('Frankenstein', hist))
