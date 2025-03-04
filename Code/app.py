@@ -15,6 +15,5 @@ def home():
     sentence = generate_sentence(markov_chain, num_words_to_generate)
     return render_template("index.html", sentence=sentence)
     
-
 if __name__ == "__main__":
     app.run(debug=True)
