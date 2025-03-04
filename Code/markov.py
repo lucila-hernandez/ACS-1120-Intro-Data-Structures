@@ -34,7 +34,7 @@ def generate_sentence(markov_chain, num_words_to_generate):
     # Keep adding words to the sentence
     for _ in range(num_words_to_generate - 3):  # Already have 3 words, so generate the rest
         successors = markov_chain.get(current_triplet, []) # Get the possible next words
-        if not successors or random.random() < 0.1:  # 10% chance to stop early
+        if not successors:  # If  no successors exist, stop
             break  
         next_word = random.choice(successors) # Pick a random next word
         generated_words.append(next_word)  # Add the word to the sentence
