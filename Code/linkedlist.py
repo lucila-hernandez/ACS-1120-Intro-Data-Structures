@@ -102,7 +102,10 @@ class LinkedList:
         """
         node = self.head
         while node is not None:
-            if matcher(node.data):
+            if callable(matcher):  # Check if matcher is a function
+                if matcher(node.data):
+                    return node.data
+            elif node.data == matcher:  # Direct comparison if matcher is a value
                 return node.data
             node = node.next
         return None
